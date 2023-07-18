@@ -1,4 +1,4 @@
-# graphics-learning
+# graphics-learning - OpenGL
 The idea is to implement a series of small projects using OpenGL, we were inspired by [this article](https://medium.com/@openglprojects/opengl-project-ideas-239e0e015d).
 
 ## Setting up
