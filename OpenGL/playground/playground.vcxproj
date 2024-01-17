@@ -131,9 +131,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\learnopengl.com\glad.c" />
+    <ClCompile Include="camera.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="shader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="camera.h" />
     <ClInclude Include="shader.h" />
   </ItemGroup>
   <ItemGroup>
