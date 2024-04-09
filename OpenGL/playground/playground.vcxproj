@@ -133,13 +133,18 @@
     <ClCompile Include="..\learnopengl.com\glad.c" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="my_main.cpp" />
     <ClCompile Include="models.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
+    <ClInclude Include="my_main.h" />
     <ClInclude Include="models.h" />
+    <ClInclude Include="player.h" />
     <ClInclude Include="shader.h" />
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="camera.frag" />

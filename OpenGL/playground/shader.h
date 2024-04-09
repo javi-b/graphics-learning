@@ -1,12 +1,11 @@
 #pragma once
 
-#include <glad/glad.h>
-#include <glm/glm.hpp>
+#include "stdafx.h"
 
-#include <string>
 #include <fstream>
 #include <sstream>
-#include <iostream>
+#include <glad/glad.h>
+#include <glm/glm.hpp>
 
 /**
  * Shader class.
@@ -36,5 +35,5 @@ public:
 
 private:
     // private functions
-    void CheckCompileErrors(GLuint shader, std::string type);
+    void CheckCompileErrors(GLuint shader, const std::string & type);
 };

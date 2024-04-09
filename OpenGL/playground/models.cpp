@@ -16,6 +16,58 @@ static const glm::vec3 kFloorInitialPositions[kNumFloors] = {
 	glm::vec3(0.0f, 0.0f, 0.0f)
 };
 
+// player
+
+static const float kPlayerVertices[] = {
+	// face 1
+	-0.25f, -0.25f, -0.25f,  0.0f, 0.0f, // triangle 1
+	 0.25f, -0.25f, -0.25f,  1.0f, 0.0f,
+	 0.25f,  0.25f, -0.25f,  1.0f, 1.0f,
+	 0.25f,  0.25f, -0.25f,  1.0f, 1.0f, // triangle 2
+	-0.25f,  0.25f, -0.25f,  0.0f, 1.0f,
+	-0.25f, -0.25f, -0.25f,  0.0f, 0.0f,
+	// face 2
+	-0.25f, -0.25f,  0.25f,  0.0f, 0.0f, // triangle 1
+	 0.25f, -0.25f,  0.25f,  1.0f, 0.0f,
+	 0.25f,  0.25f,  0.25f,  1.0f, 1.0f,
+	 0.25f,  0.25f,  0.25f,  1.0f, 1.0f, // triangle 2
+	-0.25f,  0.25f,  0.25f,  0.0f, 1.0f,
+	-0.25f, -0.25f,  0.25f,  0.0f, 0.0f,
+	// face 3
+	-0.25f,  0.25f,  0.25f,  1.0f, 0.0f, // triangle 1
+	-0.25f,  0.25f, -0.25f,  1.0f, 1.0f,
+	-0.25f, -0.25f, -0.25f,  0.0f, 1.0f,
+	-0.25f, -0.25f, -0.25f,  0.0f, 1.0f, // triangle 2
+	-0.25f, -0.25f,  0.25f,  0.0f, 0.0f,
+	-0.25f,  0.25f,  0.25f,  1.0f, 0.0f,
+	// face 4
+	 0.25f,  0.25f,  0.25f,  1.0f, 0.0f, // triangle 1
+	 0.25f,  0.25f, -0.25f,  1.0f, 1.0f,
+	 0.25f, -0.25f, -0.25f,  0.0f, 1.0f,
+	 0.25f, -0.25f, -0.25f,  0.0f, 1.0f, // triangle 2
+	 0.25f, -0.25f,  0.25f,  0.0f, 0.0f,
+	 0.25f,  0.25f,  0.25f,  1.0f, 0.0f,
+	// face 5
+	-0.25f, -0.25f, -0.25f,  0.0f, 1.0f, // triangle 1
+	 0.25f, -0.25f, -0.25f,  1.0f, 1.0f,
+	 0.25f, -0.25f,  0.25f,  1.0f, 0.0f,
+	 0.25f, -0.25f,  0.25f,  1.0f, 0.0f, // triangle 2
+	-0.25f, -0.25f,  0.25f,  0.0f, 0.0f,
+	-0.25f, -0.25f, -0.25f,  0.0f, 1.0f,
+	// face 6
+	-0.25f,  0.25f, -0.25f,  0.0f, 1.0f, // triangle 1
+	 0.25f,  0.25f, -0.25f,  1.0f, 1.0f,
+	 0.25f,  0.25f,  0.25f,  1.0f, 0.0f,
+	 0.25f,  0.25f,  0.25f,  1.0f, 0.0f, // triangle 2
+	-0.25f,  0.25f,  0.25f,  0.0f, 0.0f,
+	-0.25f,  0.25f, -0.25f,  0.0f, 1.0f
+};
+static const int kPlayerNumVertices = 36;
+static const int kNumPlayers = 1;
+static const glm::vec3 kPlayersIntitialPositions[kNumPlayers] = {
+	glm::vec3(0.0f, 0.0f, 0.0f),
+};
+
 // cubes
 
 static const float kCubeVertices[] = {
@@ -77,20 +129,30 @@ static const glm::vec3 kCubesIntitialPositions[kNumCubes] = {
 	glm::vec3(-1.3f, 1.0f, -1.5f)
 };
 
-Models::Models()
-	: model_groups_({
+/**
+ * Models constructor.
+ */
+Models::Models(Player * player_ptr)
+	: player_ptr_(player_ptr), model_groups_({
 		ModelGroup(kFloorVertices, sizeof(kFloorVertices), kFloorNumVertices, kNumFloors, kFloorInitialPositions),
+		ModelGroup(kPlayerVertices, sizeof(kPlayerVertices), kPlayerNumVertices, kNumPlayers, kPlayersIntitialPositions),
 		ModelGroup(kCubeVertices, sizeof(kCubeVertices), kCubeNumVertices, kNumCubes, kCubesIntitialPositions)
 	}) {}
 
 void Models::Update(const float delta_time) {
 
-	auto* positions = model_groups_[kCube].positions_;
+	// updated player
+	model_groups_[kPlayer].positions_[0] = player_ptr_->GetPosition();
+
+	// updates cubes
+	/*
+	auto* cubes_models_positions = model_groups_[kCube].positions_;
 	for (int i = 0; i < model_groups_[kCube].num_models_; i++) {
-		positions[i][0] += ((float(std::rand()) / RAND_MAX) * 2.0f - 1.0f) * 2.0f * delta_time;
-		positions[i][1] += 0.3f * delta_time;
-		positions[i][2] += ((float(std::rand()) / RAND_MAX) * 2.0f - 1.0f) * 2.0f * delta_time;
+		cubes_models_positions[i][0] += ((float(std::rand()) / RAND_MAX) * 2.0f - 1.0f) * 2.0f * delta_time;
+		cubes_models_positions[i][1] += 0.3f * delta_time;
+		cubes_models_positions[i][2] += ((float(std::rand()) / RAND_MAX) * 2.0f - 1.0f) * 2.0f * delta_time;
 	}
+	*/
 }
 
 const float* Models::GetVertices(const int model_group_i) {

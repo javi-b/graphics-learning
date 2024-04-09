@@ -1,24 +1,29 @@
 #pragma once
 
-#include <iostream>
+#include "stdafx.h"
+
 #include <cstdlib>
-#include <array>
 #include <glm/glm.hpp>
+
+#include "player.h"
 
 /**
  * Models class.
  */
 class Models {
 public:
-
+	/**
+	 * Enum with different model groups.
+	 */
 	enum ModelGroupName {
 		kFloor,
+		kPlayer,
 		kCube,
 		kNumModelGroups
 	};
 
 	// constructor
-	Models();
+	explicit Models(Player * player_ptr);
 
 	// public functions
 
@@ -48,5 +53,6 @@ private:
 	};
 
 	// private variables
+	Player* player_ptr_;
 	std::array<ModelGroup, kNumModelGroups> model_groups_;
 };

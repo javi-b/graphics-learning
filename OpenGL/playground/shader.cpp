@@ -123,7 +123,7 @@ void Shader::SetMat4(const std::string& name, const glm::mat4& mat) const {
 /**
  * Utility function for checking shader compilation/linking errors.
  */
-void Shader::CheckCompileErrors(GLuint shader, std::string type) {
+void Shader::CheckCompileErrors(GLuint shader, const std::string & type) {
 
 	GLint success;
 	GLchar info_log[1024];
