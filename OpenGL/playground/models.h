@@ -22,6 +22,20 @@ public:
 		kNumModelGroups
 	};
 
+	/**
+	 * ModelGroup data structure.
+	 */
+	struct ModelGroup {
+		const float * vertices_;
+		const int vertices_size_;
+		const int num_vertices_;
+		const int num_models_;
+		glm::vec3 * positions_;
+
+		ModelGroup(const float * vertices, const int vertices_size,
+			const int num_vertices, const int num_models, const glm::vec3 * initial_positions);
+	};
+
 	// constructor
 	explicit Models(Player * player_ptr);
 
@@ -37,21 +51,6 @@ public:
 	glm::vec3* GetPositions(const int model_group_i);
 
 private:
-
-	/**
-	 * ModelGroup data structure.
-	 */
-	struct ModelGroup {
-		const float * vertices_;
-		const int vertices_size_;
-		const int num_vertices_;
-		const int num_models_;
-		glm::vec3 * positions_;
-
-		ModelGroup(const float * vertices, const int vertices_size,
-			const int num_vertices, const int num_models, const glm::vec3 * initial_positions);
-	};
-
 	// private variables
 	Player* player_ptr_;
 	std::array<ModelGroup, kNumModelGroups> model_groups_;

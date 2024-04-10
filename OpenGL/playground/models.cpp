@@ -12,9 +12,11 @@ static const float kFloorVertices[] = {
 };
 static const int kFloorNumVertices = 6;
 static const int kNumFloors = 1;
-static const glm::vec3 kFloorInitialPositions[kNumFloors] = {
+static const glm::vec3 kFloorsInitialPositions[kNumFloors] = {
 	glm::vec3(0.0f, 0.0f, 0.0f)
 };
+static Models::ModelGroup kFloorsModelGroup(
+        kFloorVertices, sizeof(kFloorVertices), kFloorNumVertices, kNumFloors, kFloorsInitialPositions);
 
 // player
 
@@ -64,9 +66,11 @@ static const float kPlayerVertices[] = {
 };
 static const int kPlayerNumVertices = 36;
 static const int kNumPlayers = 1;
-static const glm::vec3 kPlayersIntitialPositions[kNumPlayers] = {
+static const glm::vec3 kPlayersInitialPositions[kNumPlayers] = {
 	glm::vec3(0.0f, 0.0f, 0.0f),
 };
+static Models::ModelGroup kPlayersModelGroup(
+        kPlayerVertices, sizeof(kPlayerVertices), kPlayerNumVertices, kNumPlayers, kPlayersInitialPositions);
 
 // cubes
 
@@ -116,7 +120,7 @@ static const float kCubeVertices[] = {
 };
 static const int kCubeNumVertices = 36;
 static const int kNumCubes = 10;
-static const glm::vec3 kCubesIntitialPositions[kNumCubes] = {
+static const glm::vec3 kCubesInitialPositions[kNumCubes] = {
 	glm::vec3(0.0f, 0.0f, 0.0f),
 	glm::vec3(2.0f, 5.0f, -15.0f),
 	glm::vec3(-1.5f, -2.2f, -2.5f),
@@ -128,16 +132,14 @@ static const glm::vec3 kCubesIntitialPositions[kNumCubes] = {
 	glm::vec3(1.5f, 0.2f, -1.5f),
 	glm::vec3(-1.3f, 1.0f, -1.5f)
 };
+static Models::ModelGroup kCubesModelGroup(
+        kCubeVertices, sizeof(kCubeVertices), kCubeNumVertices, kNumCubes, kCubesInitialPositions);
 
 /**
  * Models constructor.
  */
-Models::Models(Player * player_ptr)
-	: player_ptr_(player_ptr), model_groups_({
-		ModelGroup(kFloorVertices, sizeof(kFloorVertices), kFloorNumVertices, kNumFloors, kFloorInitialPositions),
-		ModelGroup(kPlayerVertices, sizeof(kPlayerVertices), kPlayerNumVertices, kNumPlayers, kPlayersIntitialPositions),
-		ModelGroup(kCubeVertices, sizeof(kCubeVertices), kCubeNumVertices, kNumCubes, kCubesIntitialPositions)
-	}) {}
+Models::Models(Player * player_ptr) :
+        player_ptr_(player_ptr), model_groups_({kFloorsModelGroup, kPlayersModelGroup, kCubesModelGroup}) {}
 
 void Models::Update(const float delta_time) {
 
