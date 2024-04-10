@@ -46,7 +46,7 @@ int MyMain::Run() {
     // configure global opengl state
     glEnable(GL_DEPTH_TEST);
     // uncomment this call to draw in wireframe polygons.
-	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
     // build and compile our shader zprogram
     Shader shader("camera.vert", "camera.frag");

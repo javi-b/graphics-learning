@@ -10,6 +10,6 @@ uniform mat4 projection;
 
 void main() {
     gl_Position = projection * view * model * vec4(pos, 1.0);
-	float c = (tex_coord.x + tex_coord.y) / 2;
-	color = vec3(c, c, c);
+    float c = (tex_coord.x + tex_coord.y) / 2;
+    color = vec3(c, c, c);
 }
