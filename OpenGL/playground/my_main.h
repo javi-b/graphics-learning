@@ -23,7 +23,7 @@ public:
 
     // public funtions
     int Run();
-    void MouseCallback(GLFWwindow* window, double xpos, double ypos);
+    void MouseCallback(GLFWwindow * window, double xpos, double ypos);
 
 private:
     // private constants
@@ -32,7 +32,7 @@ private:
 
     // private variables
 
-    static MyMain* current_instance_;
+    static MyMain * current_instance_;
 
     Player player_ = Player();
     Camera camera_ = Camera(&player_);
@@ -44,7 +44,7 @@ private:
     float last_frame_ = 0.0f;
 
     // private functions
-    static void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
-    static void StaticMouseCallback(GLFWwindow* window, double xpos, double ypos);
-    void ProcessInput(GLFWwindow* window);
+    static void FramebufferSizeCallback(GLFWwindow * window, int width, int height);
+    static void StaticMouseCallback(GLFWwindow * window, double xpos, double ypos);
+    void ProcessInput(GLFWwindow * window);
 };

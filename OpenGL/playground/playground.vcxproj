@@ -147,6 +147,7 @@
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".clang-format" />
     <None Include="camera.frag" />
     <None Include="camera.vert" />
   </ItemGroup>

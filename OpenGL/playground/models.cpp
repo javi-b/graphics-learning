@@ -1,5 +1,7 @@
 #include "models.h"
 
+// clang-format off
+
 // floor
 
 static const float kFloorVertices[] = {
@@ -135,11 +137,13 @@ static const glm::vec3 kCubesInitialPositions[kNumCubes] = {
 static Models::ModelGroup kCubesModelGroup(
         kCubeVertices, sizeof(kCubeVertices), kCubeNumVertices, kNumCubes, kCubesInitialPositions);
 
+// clang-format on
+
 /**
  * Models constructor.
  */
-Models::Models(Player * player_ptr) :
-        player_ptr_(player_ptr), model_groups_({kFloorsModelGroup, kPlayersModelGroup, kCubesModelGroup}) {}
+Models::Models(Player * player_ptr)
+        : player_ptr_(player_ptr), model_groups_({kFloorsModelGroup, kPlayersModelGroup, kCubesModelGroup}) {}
 
 void Models::Update(const float delta_time) {
 
@@ -157,7 +161,7 @@ void Models::Update(const float delta_time) {
     */
 }
 
-const float* Models::GetVertices(const int model_group_i) {
+const float * Models::GetVertices(const int model_group_i) {
 
     return model_groups_[model_group_i].vertices_;
 }
@@ -177,15 +181,14 @@ const int Models::GetNumModels(const int model_group_i) {
     return model_groups_[model_group_i].num_models_;
 }
 
-glm::vec3* Models::GetPositions(const int model_group_i) {
+glm::vec3 * Models::GetPositions(const int model_group_i) {
 
     return model_groups_[model_group_i].positions_;
 }
 
-Models::ModelGroup::ModelGroup(const float* vertices, const int vertices_size,
-        const int num_vertices, const int num_models, const glm::vec3* initial_positions)
-    : vertices_(vertices), vertices_size_(vertices_size),
-        num_vertices_(num_vertices), num_models_(num_models) {
+Models::ModelGroup::ModelGroup(const float * vertices, const int vertices_size, const int num_vertices,
+        const int num_models, const glm::vec3 * initial_positions)
+        : vertices_(vertices), vertices_size_(vertices_size), num_vertices_(num_vertices), num_models_(num_models) {
 
-    positions_ = const_cast<glm::vec3*>(initial_positions);
+    positions_ = const_cast<glm::vec3 *>(initial_positions);
 }

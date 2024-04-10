@@ -60,5 +60,6 @@
   <ItemGroup>
     <None Include="camera.frag" />
     <None Include="camera.vert" />
+    <None Include=".clang-format" />
   </ItemGroup>
 </Project>

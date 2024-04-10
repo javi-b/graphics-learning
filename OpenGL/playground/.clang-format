@@ -1,0 +1,36 @@
+# Javi Bonafonte's .clang-format
+
+BasedOnStyle: Google
+
+ColumnLimit: 120
+KeepEmptyLinesAtTheStartOfBlocks: true
+
+# indentation and alignment
+IndentWidth: 4
+ContinuationIndentWidth: 8
+AlignAfterOpenBracket: DontAlign
+AlignOperands: DontAlign
+ConstructorInitializerIndentWidth: 8
+IndentAccessModifiers: false
+AccessModifierOffset: -4
+IndentCaseLabels: false
+
+# single-liners
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortEnumsOnASingleLine: false
+
+# trailing comments
+SpacesBeforeTrailingComments: 1
+SpacesInLineCommentPrefix:
+    Minimum: 0
+    Maximum: 1
+AlignTrailingComments:
+    Kind: Never
+
+# pointers
+DerivePointerAlignment: false
+PointerAlignment: Middle
+
+# includes
+SortIncludes: false

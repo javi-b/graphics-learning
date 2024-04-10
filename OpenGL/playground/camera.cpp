@@ -6,7 +6,7 @@ const float Camera::kDefSensitivity_ = 0.2f;
 /**
  * Camera default constructor.
  */
-Camera::Camera(Player* player_ptr) : player_ptr_(player_ptr) {
+Camera::Camera(Player * player_ptr) : player_ptr_(player_ptr) {
 
     Update();
 }

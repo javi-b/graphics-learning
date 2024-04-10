@@ -24,7 +24,7 @@ public:
     void ProcessKeyboard(const Direction direction, const float delta_time);
 
     // getters and setters
-    glm::vec3 GetPosition() { return position_;  }
+    glm::vec3 GetPosition() { return position_; }
     void SetHorizontalAngle(const float angle) { horizontal_angle_ = angle; }
 
 private:

@@ -1,6 +1,6 @@
 #include "my_main.h"
 
-MyMain* MyMain::current_instance_ = nullptr;
+MyMain * MyMain::current_instance_ = nullptr;
 
 /**
  * Main class default contructor.
@@ -26,7 +26,7 @@ int MyMain::Run() {
 #endif
 
     // glfw window creation
-    GLFWwindow* window = glfwCreateWindow(kScrW_, kScrH_, "playground", NULL, NULL);
+    GLFWwindow * window = glfwCreateWindow(kScrW_, kScrH_, "playground", NULL, NULL);
     if (window == NULL) {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
@@ -70,10 +70,10 @@ int MyMain::Run() {
         glBufferData(GL_ARRAY_BUFFER, models.GetVerticesSize(i), models.GetVertices(i), GL_STATIC_DRAW);
 
         // position attribute
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0);
         glEnableVertexAttribArray(0);
         // texture coord attribute
-        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float)));
         glEnableVertexAttribArray(1);
     }
 
@@ -149,7 +149,7 @@ int MyMain::Run() {
 /**
  * process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
  */
-void MyMain::ProcessInput(GLFWwindow* window) {
+void MyMain::ProcessInput(GLFWwindow * window) {
 
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
@@ -167,9 +167,9 @@ void MyMain::ProcessInput(GLFWwindow* window) {
 /**
  * glfw: whenever the window size changed (by OS or user resize) this callback function executes
  */
-void MyMain::FramebufferSizeCallback(GLFWwindow* window, int width, int height) {
+void MyMain::FramebufferSizeCallback(GLFWwindow * window, int width, int height) {
 
-    // make sure the viewport matches the new window dimensions; note that width and 
+    // make sure the viewport matches the new window dimensions; note that width and
     // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, width, height);
 }
@@ -177,7 +177,7 @@ void MyMain::FramebufferSizeCallback(GLFWwindow* window, int width, int height) 
 /**
  * glfw: whenever the mouse moves, this callback is called
  */
-void MyMain::StaticMouseCallback(GLFWwindow* window, double xpos_in, double ypos_in) {
+void MyMain::StaticMouseCallback(GLFWwindow * window, double xpos_in, double ypos_in) {
 
     if (current_instance_)
         current_instance_->MouseCallback(window, xpos_in, ypos_in);
@@ -186,7 +186,7 @@ void MyMain::StaticMouseCallback(GLFWwindow* window, double xpos_in, double ypos
 /**
  * glfw: whenever the mouse moves, this callback is called
  */
-void MyMain::MouseCallback(GLFWwindow* window, double xpos_in, double ypos_in) {
+void MyMain::MouseCallback(GLFWwindow * window, double xpos_in, double ypos_in) {
 
     float xpos = static_cast<float>(xpos_in);
     float ypos = static_cast<float>(ypos_in);

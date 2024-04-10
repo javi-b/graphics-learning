@@ -32,8 +32,8 @@ public:
         const int num_models_;
         glm::vec3 * positions_;
 
-        ModelGroup(const float * vertices, const int vertices_size,
-            const int num_vertices, const int num_models, const glm::vec3 * initial_positions);
+        ModelGroup(const float * vertices, const int vertices_size, const int num_vertices, const int num_models,
+                const glm::vec3 * initial_positions);
     };
 
     // constructor
@@ -43,15 +43,15 @@ public:
 
     void Update(const float delta_time);
 
-    const float* GetVertices(const int model_group_i);
+    const float * GetVertices(const int model_group_i);
     const int GetVerticesSize(const int model_group_i);
     const int GetNumVertices(const int model_group_i);
     const int GetNumModels(const int model_group_i);
 
-    glm::vec3* GetPositions(const int model_group_i);
+    glm::vec3 * GetPositions(const int model_group_i);
 
 private:
     // private variables
-    Player* player_ptr_;
+    Player * player_ptr_;
     std::array<ModelGroup, kNumModelGroups> model_groups_;
 };

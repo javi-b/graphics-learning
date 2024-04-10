@@ -33,7 +33,7 @@ private:
 
     // private variables
 
-    Player* player_ptr_;
+    Player * player_ptr_;
 
     float distance_ = kDefDistance_; // distance from the player
     float horizontal_angle_ = 0.0f; // horizontal angle around the player
