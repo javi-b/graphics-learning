@@ -1,17 +1,15 @@
 #pragma once
 
 #include "stdafx.h"
-
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-
 #include "shader.h"
 #include "camera.h"
-#include "models.h"
 #include "player.h"
+#include "enemy_cube.h"
+#include "models.h"
 
 /**
  * MyMain class.
@@ -27,15 +25,18 @@ public:
 
 private:
     // private constants
-    static const unsigned int kScrW_ = 800;
-    static const unsigned int kScrH_ = 600;
+    static const unsigned int kScrW_ = 1280;
+    static const unsigned int kScrH_ = 720;
 
     // private variables
 
     static MyMain * current_instance_;
 
-    Player player_ = Player();
+    Player player_ = Player(glm::vec3(0.0f, 0.5f, 0.0f));
+    std::vector<EnemyCube> enemy_cubes_;
+
     Camera camera_ = Camera(&player_);
+
     float mouse_last_x_ = kScrW_ / 2.0f;
     float mouse_last_y_ = kScrH_ / 2.0f;
     bool is_first_mouse_frame_ = true;

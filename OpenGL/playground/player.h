@@ -1,13 +1,12 @@
 #pragma once
 
 #include "stdafx.h"
-
-#include <glm/glm.hpp>
+#include "world_object.h"
 
 /**
  * Player class
  */
-class Player {
+class Player : public WorldObject {
 public:
     /**
      * Directions enum.
@@ -19,17 +18,18 @@ public:
         kRight
     };
 
+    // constructor
+    explicit Player(const glm::vec3 & position) : WorldObject(position) {}
+
     // public functions
 
     void ProcessKeyboard(const Direction direction, const float delta_time);
 
     // getters and setters
-    glm::vec3 GetPosition() { return position_; }
     void SetHorizontalAngle(const float angle) { horizontal_angle_ = angle; }
 
 private:
     // private variables
     float movement_speed_ = 2.5f;
-    glm::vec3 position_ = glm::vec3(0.0f, 0.5f, 0.0f);
     float horizontal_angle_ = 0.0f;
 };

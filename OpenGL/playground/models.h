@@ -1,11 +1,9 @@
 #pragma once
 
 #include "stdafx.h"
-
 #include <cstdlib>
-#include <glm/glm.hpp>
-
 #include "player.h"
+#include "enemy_cube.h"
 
 /**
  * Models class.
@@ -26,18 +24,21 @@ public:
      * ModelGroup data structure.
      */
     struct ModelGroup {
+
         const float * vertices_;
         const int vertices_size_;
         const int num_vertices_;
-        const int num_models_;
-        glm::vec3 * positions_;
 
-        ModelGroup(const float * vertices, const int vertices_size, const int num_vertices, const int num_models,
-                const glm::vec3 * initial_positions);
+        // these need to be manually initialized after the constructor
+        int num_models_ = 0;
+        glm::vec3 * positions_ = nullptr;
+
+        ModelGroup(const float * vertices, const int vertices_size, const int num_vertices);
+        ~ModelGroup();
     };
 
-    // constructor
-    explicit Models(Player * player_ptr);
+    // constructor and destructor
+    Models(Player * player_ptr, std::vector<EnemyCube> * enemy_cubes_ptr);
 
     // public functions
 
@@ -52,6 +53,9 @@ public:
 
 private:
     // private variables
+
     Player * player_ptr_;
+    std::vector<EnemyCube> * enemy_cubes_ptr_;
+
     std::array<ModelGroup, kNumModelGroups> model_groups_;
 };

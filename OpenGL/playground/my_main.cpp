@@ -15,6 +15,23 @@ MyMain::MyMain() {
  */
 int MyMain::Run() {
 
+    // game objects initialization...
+
+    enemy_cubes_.push_back(EnemyCube(glm::vec3(0.0f, 3.0f, 0.0f)));
+    enemy_cubes_.push_back(EnemyCube(glm::vec3(2.0f, 8.0f, -15.0f)));
+    enemy_cubes_.push_back(EnemyCube(glm::vec3(-1.5f, 0.8f, -2.5f)));
+    enemy_cubes_.push_back(EnemyCube(glm::vec3(-3.8f, 1.0f, -12.3f)));
+    enemy_cubes_.push_back(EnemyCube(glm::vec3(2.4f, 2.6f, -3.5f)));
+    enemy_cubes_.push_back(EnemyCube(glm::vec3(-1.7f, 6.0f, -7.5f)));
+    enemy_cubes_.push_back(EnemyCube(glm::vec3(1.3f, 1.0f, -2.5f)));
+    enemy_cubes_.push_back(EnemyCube(glm::vec3(1.5f, 5.0f, -2.5f)));
+    enemy_cubes_.push_back(EnemyCube(glm::vec3(1.5f, 3.2f, -1.5f)));
+    enemy_cubes_.push_back(EnemyCube(glm::vec3(-1.3f, 4.0f, -1.5f)));
+
+    Models models(&player_, &enemy_cubes_);
+
+    // OpenGL initialization...
+
     // glfw: initialize and configure
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -50,9 +67,6 @@ int MyMain::Run() {
 
     // build and compile our shader zprogram
     Shader shader("camera.vert", "camera.frag");
-
-    // models
-    Models models(&player_);
 
     // Vertex Array Objects
     GLuint vaos[Models::kNumModelGroups]; // Vertex Array Objects

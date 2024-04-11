@@ -132,19 +132,23 @@
   <ItemGroup>
     <ClCompile Include="..\learnopengl.com\glad.c" />
     <ClCompile Include="camera.cpp" />
+    <ClCompile Include="enemy_cube.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="my_main.cpp" />
     <ClCompile Include="models.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="shader.cpp" />
+    <ClCompile Include="world_object.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
+    <ClInclude Include="enemy_cube.h" />
     <ClInclude Include="my_main.h" />
     <ClInclude Include="models.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="world_object.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format" />

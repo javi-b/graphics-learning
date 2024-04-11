@@ -1,6 +1,6 @@
 #include "camera.h"
 
-const float Camera::kDefDistance_ = 2.0f;
+const float Camera::kDefDistance_ = 3.0f;
 const float Camera::kDefSensitivity_ = 0.2f;
 
 /**
